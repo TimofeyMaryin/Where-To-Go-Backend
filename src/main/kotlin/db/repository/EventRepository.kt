@@ -4,6 +4,7 @@ import com.where.to.go.db.table.EventTable
 import com.where.to.go.domain.models.EventModel
 import kotlinx.coroutines.Dispatchers
 import org.jetbrains.exposed.sql.Database
+import org.jetbrains.exposed.sql.Schema
 import org.jetbrains.exposed.sql.SchemaUtils
 import org.jetbrains.exposed.sql.SqlExpressionBuilder
 import org.jetbrains.exposed.sql.insert
@@ -16,6 +17,7 @@ class EventRepository(private val database: Database) {
 
     init {
         transaction(database) {
+            SchemaUtils.drop()
             SchemaUtils.create(EventTable)
         }
     }
@@ -33,6 +35,7 @@ class EventRepository(private val database: Database) {
                 it[EventTable.name] = name
                 it[EventTable.about] = about
                 it[EventTable.created] = created
+                it[EventTable.photo] = "http://192.168.100.81:8080/media/events/e.png"
 
             }
         }
@@ -49,7 +52,8 @@ class EventRepository(private val database: Database) {
                         about = it[EventTable.about],
                         created = it[EventTable.created],
                         id = it[EventTable.id].toString(),
-                        participants = it[EventTable.participants]
+                        participants = it[EventTable.participants],
+                        photo = it[EventTable.photo]
                     )
                 }
 

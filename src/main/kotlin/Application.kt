@@ -8,7 +8,11 @@ import com.where.to.go.utils.configureSecurity
 import com.where.to.go.utils.configureSerialization
 import io.ktor.server.application.*
 import io.ktor.server.engine.embeddedServer
+import io.ktor.server.http.content.default
+import io.ktor.server.http.content.files
+import io.ktor.server.http.content.static
 import io.ktor.server.netty.Netty
+import io.ktor.server.routing.routing
 import org.jetbrains.exposed.sql.Database
 
 fun main(args: Array<String>) {
@@ -27,6 +31,8 @@ suspend fun Application.module() {
 
 
     DatabaseFactory.addMockupData(database)
+
+
 
     configureAdministration()
     configureFrameworks()

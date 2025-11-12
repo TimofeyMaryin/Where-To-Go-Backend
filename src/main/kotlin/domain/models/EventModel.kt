@@ -5,9 +5,10 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class EventModel(
+    val id: String,
     val name: String,
     val about: String,
     val created: String,
     val participants: Int,
-    val id: String,
+    val photo: String? = null
 )

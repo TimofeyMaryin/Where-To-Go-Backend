@@ -10,5 +10,7 @@ object EventTable : Table("event") {
     val created = varchar("created", 255)
     val participants = integer("participants").default(-1)
 
+    val photo = varchar("photo", 255).nullable()
+
     override val primaryKey = PrimaryKey(id)
 }
