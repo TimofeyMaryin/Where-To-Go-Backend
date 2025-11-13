@@ -35,7 +35,7 @@ class EventRepository(private val database: Database) {
                 it[EventTable.name] = name
                 it[EventTable.about] = about
                 it[EventTable.created] = created
-                it[EventTable.photo] = "http://192.168.100.81:8080/media/events/e.png"
+                it[EventTable.photo] = "media/events/e.png"
 
             }
         }

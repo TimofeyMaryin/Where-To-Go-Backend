@@ -32,11 +32,10 @@ suspend fun Application.module() {
 
     DatabaseFactory.addMockupData(database)
 
-
+    configureRouting(database)
 
     configureAdministration()
     configureFrameworks()
     configureSerialization()
     configureSecurity()
-    configureRouting(database)
 }
